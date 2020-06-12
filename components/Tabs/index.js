@@ -10,10 +10,23 @@
 
 //Getting data
 
+const topics = document.querySelector(".topics");
+
 const request = axios
 .get("https://lambda-times-backend.herokuapp.com/topics")
 .then( (result) => {
     console.log(result);
+    let topicArray = result["data"]["topics"];
+    topicArray.forEach((topic) => {
+        console.log(topic);
+        let newTab = document.createElement('div');
+        newTab.classList.add("tab");
+        newTab.textContent = topic;
+        topics.appendChild(newTab);
+
+    }
+
+    );
 })
 .catch ( (err) => {
     console.log("There was a tab error: ", err);
