@@ -34,10 +34,13 @@ const cardRequest = axios
 .catch ( (err) => {
     console.log("There was a card error: ", err);
 });
-
-function makeCard(headline, imgSrc, author) {
+//headlineText, imgSrc, authorName
+function makeCard() {
     let cardParent = document.createElement("div");
     cardParent.classList.add("card");
+
+    let headline = document.createElement("div");
+    headline.classList.add("headline");
 
     let author = document.createElement("div");
     author.classList.add("author");
@@ -45,7 +48,19 @@ function makeCard(headline, imgSrc, author) {
     let imgContainer = document.createElement("div");
     imgContainer.classList.add("img-container");
 
-    let img = document.createElement("img");
+    let authorImg = document.createElement("img");
 
     let byline = document.createElement("span");
+
+    //Appending
+    cardParent.appendChild(headline);
+    cardParent.appendChild(author);
+
+    author.appendChild(imgContainer);
+
+    imgContainer.appendChild(authorImg);
+
+    author.appendChild(byline);
+
+    return cardParent;
 }
