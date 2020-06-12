@@ -7,3 +7,14 @@
 //
 //  Each tab should look like this:
 //    <div class="tab">topic here</div>
+
+//Getting data
+
+const request = axios
+.get("https://lambda-times-backend.herokuapp.com/topics")
+.then( (result) => {
+    console.log(result);
+})
+.catch ( (err) => {
+    console.log("There was a tab error: ", err);
+});

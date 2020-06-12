@@ -23,6 +23,21 @@ function Header() {
     let temp = document.createElement("span");
     temp.classList.add("temp");
     
+    //Adding together
+
+    header.appendChild(date);
+    header.appendChild(nameHeader);
+    header.appendChild(temp);
+
+    //Adding content
+
+    date.textContent = "March 28, 2019";
+    nameHeader.textContent = "Lambda Times";
+    temp.textContent = "98°";
+
+    return header;
 
 
 }
+const headerContainer = document.querySelector(".header-container");
+headerContainer.append(Header());
