@@ -20,18 +20,49 @@
 
 console.log("test");
 
+const imgArray = ["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/trees.jpeg", "./assets/carousel/turntable.jpeg"];
+let currentIndex = 0;
+
 let carouselContainer = document.querySelector(".carousel-container");
 
-carouselContainer.append(makeCarousel());
-
-let leftB = document.querySelector('.left-button');
-let rightB = document.querySelector('.right-button');
-
-leftB.addEventListener('click', (event) => console.log("clicked L"));
-rightB.addEventListener('click', (event) => console.log("clicked R"));
+useCarousel(makeCarousel());
 
 
 
+
+function useCarousel(callback) {
+
+  carouselContainer.append(callback);
+
+
+  
+  mainImage = document.querySelector(".main-image");
+  
+  //Click events
+
+  let leftB = document.querySelector('.left-button');
+  let rightB = document.querySelector('.right-button');
+
+  leftB.addEventListener('click', (event) => { 
+    currentIndex = currentIndex -1;
+    if (currentIndex < 0) {
+      currentIndex = 3;
+
+    }
+    mainImage.src = imgArray[currentIndex];
+
+  });
+  rightB.addEventListener('click', (event) => {
+    currentIndex = currentIndex + 1;
+    if (currentIndex > 3) {
+      currentIndex = 0;
+
+    }
+    mainImage.src = imgArray[currentIndex];
+
+  });
+
+}
 
 function makeCarousel() {
   let carouselParent = document.createElement('div');
@@ -40,29 +71,22 @@ function makeCarousel() {
   let leftButton = document.createElement('div');
   leftButton.classList.add("left-button");
 
-  let mountainImg = document.createElement('img');
-  let computerImg = document.createElement('img');
-  let treesImage = document.createElement('img');
-  let turntableImage = document.createElement('img');
+  let startingImage = document.createElement('img');
+  startingImage.src = imgArray[currentIndex];
+  startingImage.classList.add("main-image");
+  startingImage.style.display = "inline";
+
   
   let rightButton = document.createElement('div');
   rightButton.classList.add("right-button");
 
   carouselParent.appendChild(leftButton);
-  carouselParent.appendChild(mountainImg);
-  carouselParent.appendChild(computerImg);
-  carouselParent.appendChild(treesImage);
-  carouselParent.appendChild(turntableImage);
+  carouselParent.appendChild(startingImage);
+
   carouselParent.appendChild(rightButton);
 
 
-  mountainImg.src = "./assets/carousel/mountains.jpeg";
-  computerImg.src = "./assets/sir.jpg";
-  treesImage.src = "./assets/carousel/trees.jpeg";
-  turntableImage.src = "./assets/carousel/trees.jpeg";
-
  
+  
   return carouselParent;
 }
-
-console.log(makeCarousel());
