@@ -28,9 +28,9 @@ const cardRequest = axios
     console.log("Result: ", result);
     let cardInfo = result["data"]["articles"];
    for (var topic in cardInfo) {
-       console.log("Topic ", topic);
+      
        let articleArray = result["data"]["articles"][topic];
-       console.log(articleArray);
+       
        articleArray.forEach ( (article) => {
         let headlineText = article["headline"];
         let imgSrc = article["authorPhoto"];
