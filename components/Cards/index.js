@@ -25,7 +25,7 @@ const cardRequest = axios
 .get("https://lambda-times-backend.herokuapp.com/articles")
 .then( (result) => {
     
-    console.log("Result: ", result);
+    
     let cardInfo = result["data"]["articles"];
    for (var topic in cardInfo) {
       
