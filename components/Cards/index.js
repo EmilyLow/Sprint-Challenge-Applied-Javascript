@@ -35,6 +35,7 @@ const cardRequest = axios
         let headlineText = article["headline"];
         let imgSrc = article["authorPhoto"];
         let authorName = article["authorName"];
+       
         cardsContainer.append(makeCard(headlineText, imgSrc, authorName));
        }
         
@@ -76,7 +77,9 @@ function makeCard(headlineText, imgSrc, authorName) {
 
     //Adding data
     headline.textContent = headlineText;
+   
     authorImg.src = imgSrc;
+    
     byline.textContent = "By " + authorName;
 
     return cardParent;

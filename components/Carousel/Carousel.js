@@ -22,6 +22,16 @@ console.log("test");
 
 let carouselContainer = document.querySelector(".carousel-container");
 
+carouselContainer.append(makeCarousel());
+
+let leftB = document.querySelector('.left-button');
+let rightB = document.querySelector('.right-button');
+
+leftB.addEventListener('click', (event) => console.log("clicked L"));
+rightB.addEventListener('click', (event) => console.log("clicked R"));
+
+
+
 
 function makeCarousel() {
   let carouselParent = document.createElement('div');
@@ -31,17 +41,10 @@ function makeCarousel() {
   leftButton.classList.add("left-button");
 
   let mountainImg = document.createElement('img');
-  mountainImg.src = "./assets/carousel/mountains.jpeg"
-
   let computerImg = document.createElement('img');
-  computerImg.src = document.createElement("./assets/carousel/computer.jpeg");
-
   let treesImage = document.createElement('img');
-  treesImage.src = "./assets/carousel/trees.jpeg";
-
   let turntableImage = document.createElement('img');
-  turntableImage.src = "./assets/carousel/trees.jpeg";
-
+  
   let rightButton = document.createElement('div');
   rightButton.classList.add("right-button");
 
@@ -52,5 +55,14 @@ function makeCarousel() {
   carouselParent.appendChild(turntableImage);
   carouselParent.appendChild(rightButton);
 
+
+  mountainImg.src = "./assets/carousel/mountains.jpeg";
+  computerImg.src = "./assets/sir.jpg";
+  treesImage.src = "./assets/carousel/trees.jpeg";
+  turntableImage.src = "./assets/carousel/trees.jpeg";
+
+ 
   return carouselParent;
 }
+
+console.log(makeCarousel());
